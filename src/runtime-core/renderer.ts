@@ -10,7 +10,7 @@ import {
   hostCreateText,
 } from "../runtime-dom";
 import { queueJob } from "./scheduler";
-import { effect } from "@vue/reactivity";
+import { effect } from "../reactivity";
 import { setupComponent } from "./component";
 import { Text } from "./vnode";
 import { shouldUpdateComponent } from "./componentRenderUtils";
@@ -394,7 +394,7 @@ function setupRenderEffect(instance, container) {
   // 从哪里做一些事
   // 收集数据改变之后要做的事 (函数)
   // 依赖收集   effect 函数
-  // 触发依赖
+  // 触发依赖 修改作者代码使用简版effect 函数
   instance.update = effect(
     function componentEffect() {
       if (!instance.isMounted) {
