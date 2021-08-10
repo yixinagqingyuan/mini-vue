@@ -5,12 +5,19 @@
     "esModuleInterop": true,
     "target": "es5",
     "module": "commonjs",
-    "noImplicitAny": true,
+    // 隐式的any 是否展示
+    "noImplicitAny": false,
     "removeComments": true,
     "preserveConstEnums": false,
     "sourceMap": true,
     "downlevelIteration": true,
-    "lib": ["es6", "DOM"]
+    "lib": [
+      "es6",
+      "DOM"
+    ]
   },
-  "include": ["src/index.ts", "src/global.d.ts"]
+  "include": [
+    "src/index.ts",
+    "src/global.d.ts"
+  ]
 }
