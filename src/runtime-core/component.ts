@@ -18,7 +18,7 @@ export function createComponentInstance(vnode, parent) {
     slots: {}, // 存放插槽的数据
     ctx: {}, // context 对象
     setupState: {}, // 存储 setup 的返回值
-    emit: () => {},
+    emit: () => { },
   };
 
   // 在 prod 坏境下的 ctx 只是下面简单的结构
@@ -74,6 +74,7 @@ function setupStatefulComponent(instance) {
 
     const setupContext = createSetupContext(instance);
     // 真实的处理场景里面应该是只在 dev 环境才会把 props 设置为只读的
+    // 拿到setup 的返回值
     const setupResult =
       setup && setup(shallowReadonly(instance.props), setupContext);
 
@@ -90,7 +91,7 @@ function createSetupContext(instance) {
     attrs: instance.attrs,
     slots: instance.slots,
     emit: instance.emit,
-    expose: () => {}, // TODO 实现 expose 函数逻辑
+    expose: () => { }, // TODO 实现 expose 函数逻辑
   };
 }
 

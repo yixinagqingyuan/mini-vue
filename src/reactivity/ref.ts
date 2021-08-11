@@ -1,7 +1,8 @@
 
-export function proxyRefs<T extends object>(
-  objectWithRefs: T
-){
+import { isReactive } from './reactive'
+export function proxyRefs(
+  objectWithRefs
+) {
   return isReactive(objectWithRefs)
     ? objectWithRefs
     : new Proxy(objectWithRefs, shallowUnwrapHandlers)

@@ -7,7 +7,8 @@
   "scripts": {
     "build": "rollup -c",
     "build:type": "tsc -p ./tsconfig.type.json",
-    "test": "jest --no-cache"
+    "test": "jest --no-cache",
+    "serve": "http-server -c-1"
   },
   "author": "zenoslin",
   "license": "ISC",
