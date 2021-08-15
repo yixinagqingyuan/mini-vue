@@ -153,6 +153,22 @@ const set = /*#__PURE__*/ createSetter()
 
 const shallowReadonlyGet = /*#__PURE__*/ createGetter(true, true)
 
+export const mutableHandlers: any = {
+  get,
+  set,
+  deleteProperty,
+  has,
+  ownKeys
+}
+
+export const shallowReadonlyHandlers = Object.assign(
+  {},
+  readonlyHandlers,
+  {
+    get: shallowReadonlyGet
+  }
+)
+
 function deleteProperty(target: object, key: string | symbol): boolean {
   const hadKey = hasOwn(target, key)
   const oldValue = (target as any)[key]
@@ -175,19 +191,3 @@ function ownKeys(target: object): (string | symbol)[] {
   track(target, TrackOpTypes.ITERATE, Array.isArray(target) ? 'length' : Symbol(''))
   return Reflect.ownKeys(target)
 }
-
-export const mutableHandlers: any = {
-  get,
-  set,
-  deleteProperty,
-  has,
-  ownKeys
-}
-
-export const shallowReadonlyHandlers = Object.assign(
-  {},
-  readonlyHandlers,
-  {
-    get: shallowReadonlyGet
-  }
-)

@@ -9,6 +9,7 @@ import {
   shallowReadonlyCollectionHandlers
 } from './collectionHandlers'
 import { isObject, toRawType } from '../shared'
+
 export const enum ReactiveFlags {
   SKIP = '__v_skip',
   IS_REACTIVE = '__v_isReactive',
