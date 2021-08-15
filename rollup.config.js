@@ -6,7 +6,7 @@ import commonjs from "@rollup/plugin-commonjs";
 import replace from "@rollup/plugin-replace";
 
 export default {
-  input: "./src/index.ts",
+  input: "./src/reactivity/index.ts",
   plugins: [
     replace({
       "process.env.NODE_ENV": JSON.stringify("development"),
@@ -21,17 +21,21 @@ export default {
     }),
     sourceMaps(),
   ],
+  treeshake: {
+    moduleSideEffects: false
+  },
   output: [
-    {
-      format: "cjs",
-      file: pkg.main,
-      sourcemap: true,
-    },
+    // {
+    //   format: "cjs",
+    //   file: pkg.main,
+    //   sourcemap: true,
+    // },
     {
       name: "vue",
       format: "es",
       file: pkg.module,
-      sourcemap: true,
+      sourcemap: false,
+      externalLiveBindings: false,
     },
   ],
 };

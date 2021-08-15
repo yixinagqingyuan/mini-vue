@@ -1,3 +1,3 @@
-import "./mini-core";
+// import "./mini-core";
 export * from "./reactivity";
-export * from "./runtime-core";
+// export * from "./runtime-core";
