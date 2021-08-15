@@ -378,7 +378,7 @@ function mountComponent(initialVNode, container, parentComponent) {
   console.log(`创建组件实例:${instance.type.name}`);
   // 2. 给 instance 加工加工
   setupComponent(instance);
-
+  // 处理响应式内容
   setupRenderEffect(instance, container);
 }
 
@@ -394,7 +394,6 @@ function setupRenderEffect(instance, container) {
   // 从哪里做一些事
   // 收集数据改变之后要做的事 (函数)
   // 依赖收集   effect 函数
-  // 触发依赖 修改作者代码使用简版effect 函数
   instance.update = effect(
     function componentEffect() {
       if (!instance.isMounted) {

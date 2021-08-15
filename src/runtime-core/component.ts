@@ -2,8 +2,8 @@ import { initProps } from "./componentProps";
 import { initSlots } from "./componentSlots";
 import { emit } from "./componentEmits";
 import { PublicInstanceProxyHandlers } from "./componentPublicInstance";
-import { proxyRefs } from "@vue/reactivity";
-import { shallowReadonly } from "@vue/reactivity";
+import { proxyRefs } from "../reactivity";
+import { shallowReadonly } from "../reactivity";
 export function createComponentInstance(vnode, parent) {
   const instance = {
     type: vnode.type,
