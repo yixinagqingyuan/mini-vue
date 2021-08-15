@@ -2,16 +2,13 @@ import { readonly, ReactiveFlags, toRaw, isObject, reactive, isMap } from './rea
 import { track, trigger } from './effect'
 import { TrackOpTypes, TriggerOpTypes, hasOwn, } from './baseHandlers'
 
-export const hasChanged = (value: any, oldValue: any): boolean =>
-  value !== oldValue && (value === value || oldValue === oldValue)
+export const hasChanged = (value: any, oldValue: any): boolean => value !== oldValue && (value === value || oldValue === oldValue)
 
 const toShallow = <T extends unknown>(value: T): T => value
 
-const toReadonly = <T extends unknown>(value: T): T =>
-  isObject(value) ? readonly(value as Record<any, any>) : value
+const toReadonly = <T extends unknown>(value: T): T => isObject(value) ? readonly(value as Record<any, any>) : value
 
-const toReactive = <T extends unknown>(value: T): T =>
-  isObject(value) ? reactive(value) : value
+const toReactive = <T extends unknown>(value: T): T => isObject(value) ? reactive(value) : value
 
 function has(this, key: unknown, isReadonly = false): boolean {
   const target = (this as any)[ReactiveFlags.RAW]
