@@ -1,8 +1,8 @@
-import { readonly, ReactiveFlags, toRaw, isObject, reactive, isMap } from './reactive'
+import { readonly, ReactiveFlags, toRaw, reactive } from './reactive'
 import { track, trigger } from './effect'
-import { TrackOpTypes, TriggerOpTypes, hasOwn, } from './baseHandlers'
-
-export const hasChanged = (value: any, oldValue: any): boolean => value !== oldValue && (value === value || oldValue === oldValue)
+import { hasOwn } from './baseHandlers'
+import { hasChanged, isObject, isMap } from '../shared'
+import { TrackOpTypes, TriggerOpTypes } from './operations'
 
 const toShallow = <T extends unknown>(value: T): T => value
 

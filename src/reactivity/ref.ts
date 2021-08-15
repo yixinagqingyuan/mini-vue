@@ -1,8 +1,8 @@
 
-import { isReactive, toRaw, isObject, reactive } from './reactive'
+import { isReactive, toRaw, reactive } from './reactive'
 import { track, trigger } from './effect'
-import { TriggerOpTypes, TrackOpTypes } from './baseHandlers'
-import { hasChanged } from './collectionHandlers'
+import { isObject, hasChanged } from '../shared'
+import { TrackOpTypes, TriggerOpTypes } from './operations'
 
 export function isRef(r) {
   return Boolean(r && r.__v_isRef === true)

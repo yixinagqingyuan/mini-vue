@@ -1,5 +1,5 @@
-import { TriggerOpTypes, isIntegerKey } from './baseHandlers'
-import { isMap } from './reactive'
+import { hasChanged, isIntegerKey, isMap } from '../shared'
+import { TriggerOpTypes } from './operations'
 // 通过闭包保存当前的cb
 const effectStack: any = []
 

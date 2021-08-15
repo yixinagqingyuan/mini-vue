@@ -25,13 +25,15 @@ export default {
     {
       format: "cjs",
       file: pkg.main,
-      sourcemap: true,
+      sourcemap: false,
+      externalLiveBindings: false
     },
     {
       name: "vue",
       format: "es",
       file: pkg.module,
-      sourcemap: true,
+      sourcemap: false,
+      externalLiveBindings: false
     },
   ],
 };

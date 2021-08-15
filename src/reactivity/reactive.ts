@@ -8,7 +8,7 @@ import {
   readonlyCollectionHandlers,
   shallowReadonlyCollectionHandlers
 } from './collectionHandlers'
-
+import { isObject, toRawType } from '../shared'
 export const enum ReactiveFlags {
   SKIP = '__v_skip',
   IS_REACTIVE = '__v_isReactive',
@@ -55,16 +55,6 @@ function targetTypeMap(rawType: string) {
       return TargetType.INVALID
   }
 }
-
-export const toRawType = (value) => {
-  return toTypeString(value).slice(8, -1)
-}
-
-export const isMap = (val: unknown): val is Map<any, any> => toTypeString(val) === '[object Map]'
-
-export const toTypeString = (value) => Object.prototype.toString.call(value)
-
-export const isObject = (val) => val !== null && typeof val === 'object'
 
 // 判断是否是响应式对象
 export function isReactive(value) {

@@ -1,43 +1,17 @@
 import {
-  ReactiveFlags,
-  isObject,
-  readonly,
   reactive,
-  shallowReadonlyMap,
-  readonlyMap,
-  shallowReactiveMap,
-  reactiveMap,
+  readonly,
   toRaw,
-
+  ReactiveFlags,
+  readonlyMap,
+  reactiveMap,
+  shallowReactiveMap,
+  shallowReadonlyMap
 } from './reactive'
 import { isRef } from './ref'
 import { track, trigger } from './effect'
-import { hasChanged } from './collectionHandlers'
-
-export const enum TrackOpTypes {
-  GET = 'get',
-  HAS = 'has',
-  ITERATE = 'iterate'
-}
-
-export const enum TriggerOpTypes {
-  SET = 'set',
-  ADD = 'add',
-  DELETE = 'delete',
-  CLEAR = 'clear'
-}
-
-export const isString = (val: unknown): val is string => typeof val === 'string'
-
-export const isSymbol = (val: unknown): val is symbol => typeof val === 'symbol'
-
-export const isIntegerKey = (key): any => {
-  isString(key) &&
-    key !== 'NaN' &&
-    key[0] !== '-' &&
-    '' + parseInt(key, 10) === key
-}
-
+import { isObject, isSymbol, isIntegerKey, hasChanged } from '../shared'
+import { TrackOpTypes, TriggerOpTypes } from './operations'
 export const readonlyHandlers: ProxyHandler<object> = {
   get: createGetter(true),
   set(target, key) {
