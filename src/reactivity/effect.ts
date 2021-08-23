@@ -44,6 +44,7 @@ export function effect(
     fn = fn.raw
   }
   // 真正的创建方法在这里
+  // 建立当前的变量和依赖的关系
   const effect = createReactiveEffect(fn, options)
   if (!options.lazy) {
     effect()
@@ -55,10 +56,12 @@ export function effect(
 function createReactiveEffect(
   fn,
   options) {
+  debugger
   const effect = function reactiveEffect() {
     if (!effect.active) {
       return options.scheduler ? undefined : fn()
     }
+    // 如果当前的依赖栈中没有
     if (!effectStack.includes(effect)) {
       cleanup(effect)
       try {
@@ -67,7 +70,7 @@ function createReactiveEffect(
         effectStack.push(effect)
         // 给当前的这个effect 变为活动的effect
         activeEffect = effect
-        // 执行以下
+        // 执行一下
         return fn()
       } finally {
         // 执行成功了出栈

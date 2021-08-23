@@ -41,7 +41,7 @@ class RefImpl {
   constructor(private _rawValue, public readonly _shallow = false) {
     this._value = _shallow ? _rawValue : convert(_rawValue)
   }
-
+  // 最后将ts 的get 和set 转换为浏览器的object.defineproperty
   get value() {
     track(toRaw(this), TrackOpTypes.GET, 'value')
     return this._value
