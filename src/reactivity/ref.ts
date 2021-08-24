@@ -26,7 +26,7 @@ const shallowUnwrapHandlers = {
     }
   }
 }
-
+// ref 的响应式其实就是利用object.defineproperty的能力去做响应式
 function createRef(rawValue: unknown, shallow = false) {
   if (isRef(rawValue)) {
     return rawValue
