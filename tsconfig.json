@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "strict": true,
+    "strict": false,
     "moduleResolution": "node",
     "esModuleInterop": true,
     "target": "es5",
@@ -11,6 +11,7 @@
     "preserveConstEnums": false,
     "sourceMap": true,
     "downlevelIteration": true,
+    "alwaysStrict": false,
     "lib": [
       "es6",
       "DOM"

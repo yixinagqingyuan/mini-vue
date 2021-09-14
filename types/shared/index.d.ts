@@ -1,0 +1,13 @@
+export * from "./shapeFlags";
+export declare const camelize: (str: string) => string;
+export declare const capitalize: (str: string) => string;
+export declare const toHandlerKey: (str: string) => string;
+export declare const hasChanged: (value: any, oldValue: any) => boolean;
+export declare const isString: (val: unknown) => val is string;
+export declare const isIntegerKey: (key: unknown) => boolean;
+export declare const isMap: (val: unknown) => val is Map<any, any>;
+export declare const objectToString: () => string;
+export declare const toTypeString: (value: unknown) => string;
+export declare const isObject: (val: unknown) => val is Record<any, any>;
+export declare const toRawType: (value: unknown) => string;
+export declare const isSymbol: (val: unknown) => val is symbol;
